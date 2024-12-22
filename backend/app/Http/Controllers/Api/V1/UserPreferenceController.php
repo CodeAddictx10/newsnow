@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserPreferenceRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class UserPreferenceController
 {
@@ -19,17 +17,12 @@ class UserPreferenceController
 
         /** @var User $user */
         $user = $request->user();
-        if(count($data["authors"])){
-            $user->authors()->sync($data["authors"]);
-        }
 
-        if(count($data["sources"])){
-            $user->sources()->sync($data["sources"]);
-        }
+        $user->authors()->sync($data["authors"]);
 
-        if(count($data["categories"])){
-            $user->categories()->sync($data["categories"]);
-        }
+        $user->sources()->sync($data["sources"]);
+
+        $user->categories()->sync($data["categories"]);
 
         return response()->json(['message' => 'Preferences updated successfully']);
     }

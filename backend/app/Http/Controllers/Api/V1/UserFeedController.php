@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Resources\NewsResource;
 use App\Models\News;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class UserFeedController
         $data = QueryBuilder::for(News::class)
         ->allowedFilters([
             'title',
-            'published_at',
+            AllowedFilter::callback('published_at', fn (Builder $query, string $value) => $query->whereDate('published_at', Carbon::parse($value)->format('Y-m-d H:i:s'))),
             AllowedFilter::exact('source_id'),
             AllowedFilter::exact('author_id'),
             AllowedFilter::exact('category_id'),

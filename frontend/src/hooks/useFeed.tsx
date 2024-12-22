@@ -18,6 +18,11 @@ export default function useFeed() {
     };
 
     useEffect(() => {
+        setNews([]);
+        setCursor(undefined);
+    }, [search]);
+
+    useEffect(() => {
         if (data?.data) {
             setNews((prev: TNews[]) => [...prev, ...data.data]);
         }

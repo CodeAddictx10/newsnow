@@ -29,7 +29,10 @@ export const newsApi = api.injectEndpoints({
                 url: `/api/v1/news${query ? "?" + query : ""}`,
                 params: { cursor },
             }),
-            providesTags: ["news"],
+            providesTags: (_, _err, { cursor, query }) => [
+                { type: "news", id: query || "DEFAULT" },
+                { type: "news", id: cursor || "DEFAULT" },
+            ],
         }),
         fetchUserPersonalizedNew: builder.query<
             TNewsResponse,
@@ -45,7 +48,10 @@ export const newsApi = api.injectEndpoints({
                 url: `/api/v1/feeds${query ? "?" + query : ""}`,
                 params: { cursor },
             }),
-            providesTags: ["feeds"],
+            providesTags: (_, _err, { cursor, query }) => [
+                { type: "feeds", id: query || "DEFAULT" },
+                { type: "feeds", id: cursor || "DEFAULT" },
+            ],
         }),
     }),
 });

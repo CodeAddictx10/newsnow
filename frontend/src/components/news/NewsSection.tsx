@@ -1,6 +1,7 @@
 import { TUseNews } from "@/types";
 import { Button } from "../ui/button";
 import NewsCard from "./NewsCard";
+import NotFound from "../NotFound";
 
 type TNewSectionProps = TUseNews & { title: string };
 export default function NewsSection({
@@ -11,6 +12,9 @@ export default function NewsSection({
     loadMore,
     meta,
 }: TNewSectionProps) {
+    if(!isLoading && !news.length){
+        return <NotFound/>
+    }
     return (
         <section className="container px-0 pb-24 mx-auto text-gray-600 body-font">
             <div className="flex flex-wrap w-full lg:mb-20">

@@ -5,14 +5,22 @@ import { useSearchParams } from "react-router-dom";
 
 export default function useNews() {
     const [search] = useSearchParams();
-    const [news, setNews] = useState<TNews[]>([]); 
+    const [news, setNews] = useState<TNews[]>([]);
     const [cursor, setCursor] = useState<string | undefined>(undefined);
-    const { data, isFetching, isLoading } = useFetchNewsQuery({ cursor, query: search.toString() });
+    const { data, isFetching, isLoading } = useFetchNewsQuery({
+        cursor,
+        query: search.toString(),
+    });
 
     const loadMore = () => {
         if (!data?.meta.next_cursor) return;
-        setCursor(data?.meta.next_cursor); 
+        setCursor(data?.meta.next_cursor);
     };
+
+    useEffect(() => {
+        setNews([]);
+        setCursor(undefined);
+    }, [search]);
 
     useEffect(() => {
         if (data?.data) {
