@@ -10,7 +10,7 @@ export default function NewsCard({ news }: TNewsCardProps) {
         <a
             href={news.url}
             target="_blank"
-            className="xl:w-1/4 md:w-1/2 pb-4 md:p-4 min-h-[350px] flex">
+            className="xl:w-1/4 md:w-1/2 mb-8 px-4 min-h-[350px] flex">
             <div className="bg-gray-100 p-6 rounded-lg flex flex-col justify-between w-full">
                 <img
                     className="h-40 w-full object-cover object-center mb-4"
