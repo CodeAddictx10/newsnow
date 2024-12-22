@@ -36,8 +36,6 @@ const slice = createSlice({
             .addMatcher(
                 authApi.endpoints.login.matchFulfilled,
                 (state, { payload }) => {
-                    console.log(payload);
-                    
                     state.isAuthenticated = true;
                     state.user = payload.data!
                 },

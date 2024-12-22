@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 import { getCsrfToken } from "@/lib/utils";
-console.log(import.meta.env.VITE_API_URL);
 
 const baseQuery = fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,

@@ -27,15 +27,14 @@ export default function PasswordSetting() {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            const payload = await updatePassword(values).unwrap();
-            console.log("fulfilled", payload);
+            await updatePassword(values);
+
             toast({
                 title: "Password updated successfully",
             });
             form.reset();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
-            console.log("rejected", error);
-
             toast({
                 variant: "destructive",
                 title: "Unable to create account, please try again",

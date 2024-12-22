@@ -91,8 +91,8 @@ export function Preferences() {
             toast({
                 title: "News preferences updated successfully",
             });
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
-            console.log("rejected", error);
             toast({
                 variant: "destructive",
                 title: "Unable to update your new preferences, please try again",
