@@ -26,8 +26,6 @@ COPY . /var/www/html
 
 COPY --chown=$user:www-data . /var/www/html
 
-COPY /var/www/html/.env.example /var/www/html/.env
-
 USER $user
 
 EXPOSE 9000
