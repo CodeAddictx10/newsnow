@@ -6,7 +6,7 @@
 
 3. ``docker exec news_app_backend cp .env.example .env``
 
-4. Copy over the thirdparties news providers API detail that was shared via the email with Onat
+4. Copy over the thirdparties news providers API keys that was shared via the email with Onat
 
 5. ``docker exec news_app_backend composer install``
 
